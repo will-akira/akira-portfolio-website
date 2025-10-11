@@ -2,10 +2,6 @@ const overlay = document.getElementById('large-images');
 
 const images = document.querySelectorAll('.image-grid img');
 
-const hobGoblinFolder = [
-    '/images/hob-goblin-armors/hob goblin armor warrior render1.png'
-]
-
 images.forEach(thumb => {
     // creating the large image and buttons and then appending them to #large-images section
     thumb.addEventListener('click', (e) => {
@@ -37,4 +33,5 @@ overlay.addEventListener('click', (e) => e.stopPropagation());
 // only closes the overlay when clicking "outside" of it
 document.body.addEventListener('click', () => {
     overlay.style.display = 'none';
+
 })
