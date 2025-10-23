@@ -1,37 +1,28 @@
-const overlay = document.getElementById('large-images');
+const konjunktivII = "konjunktivii.html";
+const konjunktivIIName = "B1 - Konjunktiv II";
+const adjektivendungen = "adjektivendungen.html";
+const adjektivendungenName = "B1 - Adjektivendungen";
+const praeteritum = "präteritum.html";
+const praeteritumName = "B1 - Präteritum";
 
-const images = document.querySelectorAll('.image-grid img');
+const links = [[konjunktivII, konjunktivIIName], [adjektivendungen, adjektivendungenName], [praeteritum, praeteritumName]];
 
-images.forEach(thumb => {
-    // creating the large image and buttons and then appending them to #large-images section
-    thumb.addEventListener('click', (e) => {
-        e.stopPropagation(); // prevents the click from reaching the body
-        const largeSrc = thumb.src;
-        const largeImg = document.createElement('img');
-        largeImg.src = largeSrc;
-        
-        const leftButton = document.createElement('button');
-        leftButton.id = 'leftbutton';
-        leftButton.innerText = '<';
+const list = document.getElementById('new-links');
 
-        const rightButton = document.createElement('button');
-        rightButton.id = 'rightbutton';
-        rightButton.innerText = '>';
+function listNewLinks() {
+    for (let link of links) {
+        let newListItem = document.createElement('li');
 
-        overlay.innerHTML = '';
-        overlay.appendChild(leftButton);
-        overlay.appendChild(largeImg);
-        overlay.appendChild(rightButton);
-        overlay.style.display = 'flex';
-    })
-})
+        let newLink = document.createElement('a');
+        newLink.href = link[0];
+        newLink.innerText = link[1];
 
-// prevents clicks inside the overlay from closing it
-overlay.addEventListener('click', (e) => e.stopPropagation());
+        newListItem.appendChild(newLink);
+
+        list.appendChild(newListItem);
+    }
+}
+
+listNewLinks();
 
 
-// only closes the overlay when clicking "outside" of it
-document.body.addEventListener('click', () => {
-    overlay.style.display = 'none';
-
-})
